@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 
-@Tag(name = "Auth API")
+@Tag(name = "인증 API")
 interface AuthApi {
 
     @Operation(summary = "회원가입")

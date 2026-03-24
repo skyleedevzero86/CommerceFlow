@@ -7,6 +7,7 @@ import com.sleekydz86.store.auth.application.port.`in`.AuthUseCase
 import com.sleekydz86.store.auth.application.port.`in`.command.*
 import com.sleekydz86.store.auth.domain.Auth
 import com.sleekydz86.store.global.exceptions.*
+import com.sleekydz86.store.global.util.throwWhen
 
 @Service
 class AuthService(
@@ -36,7 +37,7 @@ class AuthService(
             ?: throw CustomException(AuthExceptionType.AUTH_NOT_FOUND_EXCEPTION)
 
         require(auth.matches(command.password, authPasswordEncryptor)) {
-            PASSWORD_INVALID_EXCEPTION
+            AuthExceptionType.PASSWORD_INVALID_EXCEPTION.message
         }
 
         return tokenProviderPort.create(auth.id)

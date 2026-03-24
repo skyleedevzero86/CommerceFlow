@@ -10,7 +10,9 @@ class SecurityAuthPasswordEncryptor(
 ) : AuthPasswordEncryptor {
 
     override fun encrypt(password: String): String {
-        return passwordEncoder.encode(password)
+        return requireNotNull(passwordEncoder.encode(password)) {
+            "비밀번호 인코딩 결과가 비어 있습니다."
+        }
     }
 
     override fun matches(password: String, encodedPassword: String): Boolean {

@@ -13,7 +13,7 @@ enum class AuthExceptionType : CustomExceptionType {
 
     USERNAME_ALREADY_EXISTS_EXCEPTION {
         override val subject: String = "AUTH_EXCEPTION"
-        override val message: String = "이미 존재하는 username입니다."
+        override val message: String = "이미 존재하는 사용자 아이디입니다."
         override val httpStatusCode: HttpStatusCode = HttpStatus.CONFLICT
     },
 
